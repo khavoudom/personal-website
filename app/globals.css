@@ -1,26 +1,176 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-paper: #fcf8f0;
+  --color-cardboard: #e8dcc8;
+  --color-aged-paper: #f5ede0;
+  --color-ink: #2c2c28;
+  --color-ink-muted: #8b8b7a;
+  --color-blue-pen: #3b6e8c;
+  --color-red-marker: #c75c4a;
+  --color-rust: #b85c3a;
+  --color-coffee: #c4a27a;
+  --color-tape: #f5e5c8;
+  --color-pencil: #8b8b7a;
+  --font-display: var(--font-caveat);
+  --font-body: var(--font-special-elite);
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence baseFrequency='0.6' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0.8'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.12'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Coffee stain accent on sections */
+.coffee-stain::after {
+  content: "";
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  width: 100px;
+  height: 64px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(196, 162, 122, 0.25) 0%,
+    rgba(196, 162, 122, 0) 70%
+  );
+  border-radius: 50%;
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+/* Tape effect for cards */
+.tape-corner {
+  position: relative;
+}
+
+.tape-corner::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 48px;
+  height: 14px;
+  background: var(--color-tape);
+  opacity: 0.6;
+  border-radius: 1px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Section divider: hand-drawn scribble */
+.section-divider {
+  height: 20px;
+  border: none;
+  margin: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5,12 Q15,5 25,12 T45,12 T65,12 T85,12 T100,12' stroke='%238B8B7A' fill='none' stroke-width='2' stroke-linecap='round' opacity='0.35'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 100px 20px;
+}
+
+/* Doodle bounce animation */
+@keyframes doodle {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(1px, -0.5px) rotate(0.5deg);
+  }
+  75% {
+    transform: translate(-0.5px, 1px) rotate(-0.5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .doodle {
+    animation: doodle 7s ease-in-out infinite;
+  }
+}
+
+/* Scribble underline for headings */
+.scribble-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.scribble-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 80 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5,8 Q18,3 30,8 T55,8 T75,8' stroke='%233B6E8C' fill='none' stroke-width='1.5' stroke-linecap='round' opacity='0.5'/%3E%3C/svg%3E")
+    repeat-x bottom;
+  background-size: 80px 12px;
+  pointer-events: none;
+}
+
+/* Hand-drawn SVG path style */
+.hand-stroke {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Process sketch note style */
+.sketch-note {
+  font-family: var(--font-display);
+  transform: rotate(-1.5deg);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1c1c1a;
+    color: #e0dcd0;
+  }
+
+  body::before {
+    opacity: 0.06;
+    filter: invert(1) brightness(0.8);
+  }
+
+  .tape-corner::before {
+    opacity: 0.35;
+  }
+
+  .section-divider {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5,12 Q15,5 25,12 T45,12 T65,12 T85,12 T100,12' stroke='%238B8B7A' fill='none' stroke-width='2' stroke-linecap='round' opacity='0.2'/%3E%3C/svg%3E");
+  }
+
+  ::selection {
+    background: rgba(59, 110, 140, 0.4);
+  }
+
+  .coffee-stain::after {
+    opacity: 0.15;
+  }
+}
+
+::selection {
+  background: rgba(59, 110, 140, 0.15);
 }
