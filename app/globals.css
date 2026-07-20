@@ -143,33 +143,6 @@ main {
   transform: rotate(-1.5deg);
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #1c1c1a;
-    color: #e0dcd0;
-  }
-
-  body::before {
-    opacity: 0.06;
-    filter: invert(1) brightness(0.8);
-  }
-
-  .tape-corner::before {
-    opacity: 0.35;
-  }
-
-  .section-divider {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5,12 Q15,5 25,12 T45,12 T65,12 T85,12 T100,12' stroke='%238B8B7A' fill='none' stroke-width='2' stroke-linecap='round' opacity='0.2'/%3E%3C/svg%3E");
-  }
-
-  ::selection {
-    background: rgba(59, 110, 140, 0.4);
-  }
-
-  .coffee-stain::after {
-    opacity: 0.15;
-  }
-}
 
 ::selection {
   background: rgba(59, 110, 140, 0.15);
