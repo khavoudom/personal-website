@@ -143,7 +143,6 @@ main {
   transform: rotate(-1.5deg);
 }
 
-
 ::selection {
   background: rgba(59, 110, 140, 0.15);
 }
