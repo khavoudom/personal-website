@@ -10,7 +10,7 @@ export default function HeroSection() {
               <div className="w-36 h-36 sm:w-44 sm:h-44 overflow-hidden border-2 border-ink/10 bg-aged-paper shadow-sm cursor-pointer">
                 <Image
                   src="/IMG_6509.png"
-                  alt="Portrait of Khav Oudom, software developer"
+                  alt="Khav Oudom"
                   width={176}
                   height={176}
                   priority
@@ -35,10 +35,7 @@ export default function HeroSection() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display text-ink leading-tight scribble-underline">
               Khav Oudom
             </h1>
-            <p className="mt-3 font-mono text-xs sm:text-sm text-blue-pen tracking-[0.15em] uppercase">
-              k.oudom &middot; ខាវ
-            </p>
-            <p className="mt-4 text-base sm:text-lg text-ink-muted leading-relaxed max-w-lg font-body">
+            <p className="mt-5 text-base sm:text-lg text-ink-muted leading-relaxed max-w-lg font-body">
               CS Student &amp; Software Developer building web apps with React,
               Vue, and Python.
             </p>
