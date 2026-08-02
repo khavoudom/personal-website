@@ -27,7 +27,9 @@ export default function ContactSection() {
               href={link.href}
               target={link.href.startsWith("http") ? "_blank" : undefined}
               rel={
-                link.href.startsWith("http") ? "noopener noreferrer" : undefined
+                link.href.startsWith("http")
+                  ? "me noopener noreferrer"
+                  : undefined
               }
               className="block group"
             >
